@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import movies from "./movies.json"
 
-function App() {
+function Card ({image, title, subtitle, description}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="card" >
+      <div className="image" style={{backgroundImage: `url(${image})`}}/>
+      <div className="info">
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
+        <p>{description}</p>
+      </div>
     </div>
   );
+}
+
+function App () {
+  return (
+    <div className="page">
+      <div className="layout">
+        <main className="container">
+          <Card {...movies[0]}/>
+          <Card {...movies[1]}/>
+          <Card {...movies[2]}/>
+        </main>
+        <article className="container">
+          <Card {...movies[3]}/>
+          <Card {...movies[2]}/>
+          <Card {...movies[1]}/>
+        </article>
+      </div>
+    </div>
+  )
 }
 
 export default App;
